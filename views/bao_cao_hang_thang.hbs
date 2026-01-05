@@ -1,0 +1,133 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+<style>
+  .bg-custom {
+    background-image: linear-gradient(177.6deg, rgba(20, 0, 113, 1) 15.3%, rgba(1, 0, 62, 1) 91.3%);
+  }
+
+  .table-title {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .report-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .report-box {
+    flex: 1;
+    min-width: 450px;
+  }
+</style>
+
+<div class="container-user container-fluid d-flex flex-column align-items-center" style="margin-top: 32px; max-width: 1200px;">
+  <h3 class="mb-4 text-center w-100">Báo cáo tháng</h3>
+
+  <!-- Form chọn tháng/năm/quận -->
+  <form action="/main/report" method="POST" class="row g-3 w-100 mb-5" style="justify-content: center;">
+    <div class="col-md-3">
+      <label for="thang" class="form-label">Tháng</label>
+      <select class="form-select" id="thang" name="thang" required>
+        {{#each months}}
+          <option value="{{this}}" {{#eq ../selectedMonth this}}selected{{/eq}}>Tháng {{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="nam" class="form-label">Năm</label>
+      <select class="form-select" id="nam" name="nam" required>
+        {{#each years}}
+          <option value="{{this}}" {{#eq ../selectedYear this}}selected{{/eq}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="district" class="form-label">Quận</label>
+      <select class="form-select" id="district" name="district">
+        <option value="">-- Tất cả --</option>
+        {{#each districts}}
+          <option value="{{id}}" {{#eq ../selectedDistrict districtName}}selected{{/eq}}>{{districtName}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="col-md-3 d-flex align-items-end">
+      <button type="submit" class="btn bg-custom text-white fw-semibold w-100">
+        <i class="bi bi-bar-chart-line me-2"></i> Lập báo cáo
+      </button>
+    </div>
+  </form>
+
+
+
+  <!-- 🔀 2 phần chia ngang: Doanh thu | Công nợ -->
+  <div class="report-wrapper w-100">
+    <!-- Báo cáo Doanh Số -->
+    <div class="report-box">
+      <div class="table-title py-2">Báo Cáo Doanh Số</div>
+      <p><strong>Tháng:</strong> {{selectedMonth}}/{{selectedYear}}</p>
+      <table class="table table-bordered align-middle text-center">
+        <thead class="table-secondary">
+          <tr>
+            <th>STT</th>
+            <th>Đại lý</th>
+            <th>Số Phiếu Xuất</th>
+            <th>Tổng Trị Giá</th>
+            <th>Tỷ Lệ (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each salesReport}}
+            <tr>
+              <td>{{addOne @index}}</td>
+              <td>{{agencyName}}</td>
+              <td>{{numOrders}}</td>
+              <td>{{formatCurrency totalSales}}</td>
+              <td>{{percentage}}</td>
+            </tr>
+          {{else}}
+            <tr><td colspan="5">Không có dữ liệu</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- Báo cáo Công Nợ -->
+    <div class="report-box">
+      <div class="table-title py-2">Báo Cáo Công Nợ Đại Lý</div>
+      <p><strong>Tháng:</strong> {{selectedMonth}}/{{selectedYear}}</p>
+      <table class="table table-bordered align-middle text-center">
+        <thead class="table-secondary">
+          <tr>
+            <th>STT</th>
+            <th>Đại lý</th>
+            <th>Nợ Đầu</th>
+            <th>Phát Sinh</th>
+            <th>Nợ Cuối</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each debtReport}}
+            <tr>
+              <td>{{addOne @index}}</td>
+              <td>{{agencyName}}</td>
+              <td>{{formatCurrency openingDebt}}</td>
+              <td>{{formatCurrency incurred}}</td>
+              <td>{{formatCurrency closingDebt}}</td>
+            </tr>
+          {{else}}
+            <tr><td colspan="5">Không có dữ liệu</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

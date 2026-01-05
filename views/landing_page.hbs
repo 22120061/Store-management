@@ -1,0 +1,284 @@
+<div class="landing-container">
+    <div class="left-content" id="leftContent">
+        <h1>Chủ Động Quản Lý<br>Hệ Thống Đại Lý<br>Hiệu Quả & Chuyên Nghiệp</h1>
+        <p>
+            Hệ thống giúp giám sát, phân quyền và tối ưu hóa hoạt động của các đại lý trên toàn quốc.
+            Quản lý thông minh, dễ sử dụng và hiệu quả.
+        </p>
+        <a href="/user/register" class="btn-register">ĐĂNG KÝ NGAY</a>
+    </div>
+
+    <div class="right-image" id="rightImage">
+        <div class="diagonal-overlay"></div>
+        <img src="images/anhvanphong.jpg" alt="Office" />
+    </div>
+</div>
+
+<section class="partners-section">
+    <h2>Là đối tác tin cậy của hơn <strong>1.000</strong><br>doanh nghiệp trên toàn quốc.</h2>
+
+    <div class="partners-marquee">
+        <div class="partners-logos">
+            <img src="/images/us-bank.png" alt="Banking" />
+            <img src="/images/capitalone.png" alt="Finance" />
+            <img src="/images/budweiser.png" alt="Beverage" />
+            <img src="/images/tiktok.webp" alt="Social" />
+            <img src="/images/FedEx.png" alt="Logistics" />
+            <img src="/images/uniqlo.png" alt="Fashion" />
+            <img src="/images/viettel.jpg" alt="Telecom" />
+            <img src="/images/coursera.png" alt="Education" />
+            <img src="/images/cigna-group.webp" alt="Healthcare" />
+            <img src="/images/amazon.png" alt="E-commerce" />
+        </div>
+    </div>
+</section>
+
+
+<section class="benefits-section">
+    <h2>Lợi ích bạn nhận được</h2>
+    <div class="benefit-items">
+        <div class="benefit-item">
+            <div class="benefit-icon"><i class="bi bi-shield-lock"></i></div>
+            <h3>Hệ thống an toàn, tin cậy</h3>
+            <p>Dữ liệu được mã hóa và bảo vệ, chỉ người có quyền mới truy cập được thông tin quan trọng.</p>
+        </div>
+        <div class="benefit-item">
+            <div class="benefit-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <h3>Giám sát hiệu quả</h3>
+            <p>Quản lý đại lý thông minh qua báo cáo trực quan và phân tích chi tiết theo thời gian thực.</p>
+        </div>
+        <div class="benefit-item">
+            <div class="benefit-icon"><i class="bi bi-headset"></i></div>
+            <h3>Hỗ trợ tận tâm</h3>
+            <p>Đội ngũ hỗ trợ sẵn sàng 24/7 để giúp bạn xử lý sự cố và đảm bảo hệ thống luôn hoạt động trơn tru.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    .left-content {
+        flex: 1;
+        padding: 40px 60px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+        background: url('/images/bg-left.avif') no-repeat center center;
+        background-size: cover;
+    }
+
+    .left-content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.85);
+        /* phủ lớp trắng mờ */
+        backdrop-filter: blur(2px);
+        /* làm mờ nhẹ */
+        z-index: 0;
+    }
+
+    .left-content>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .landing-container {
+        display: flex;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .left-content {
+        flex: 1;
+        padding: 40px 60px 80px;
+        /* Top 40px, Right 60px, Bottom 80px */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 2;
+    }
+
+    .left-content h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.4;
+        margin-bottom: 24px;
+    }
+
+    .left-content p {
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 32px;
+        line-height: 1.6;
+        max-width: 600px;
+    }
+
+    .btn-register {
+        background: linear-gradient(to right, #005bea, #00c6fb);
+        color: white;
+        padding: 12px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        width: fit-content;
+        transition: background 0.3s ease;
+    }
+
+    .btn-register:hover {
+        background: linear-gradient(to right, #0041c4, #00a6d6);
+    }
+
+    .right-image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 100%;
+        overflow: hidden;
+        clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 70% 100%);
+        z-index: 3;
+        /* thêm dòng này */
+    }
+
+    .right-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .diagonal-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.25);
+        mix-blend-mode: multiply;
+        pointer-events: none;
+    }
+
+
+
+    .partners-section {
+        text-align: center;
+        padding: 60px 20px;
+        background: #fff;
+    }
+
+    .partners-section h2 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #111;
+    }
+
+    .partners-logos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .partners-logos img {
+        height: 40px;
+        opacity: 0.8;
+        transition: transform 0.3s ease;
+    }
+
+    .partners-logos img:hover {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    .benefits-section {
+        padding: 80px 40px;
+        text-align: center;
+        background-color: #fff;
+    }
+
+    .benefits-section h2 {
+        font-size: 2rem;
+        margin-bottom: 50px;
+        font-weight: bold;
+    }
+
+    .benefit-items {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        flex-wrap: wrap;
+    }
+
+    .benefit-item {
+        width: 300px;
+        text-align: center;
+    }
+
+    .benefit-icon {
+        background: #f4f7fc;
+        padding: 20px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .benefit-icon img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .benefit-item h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+        font-weight: bold;
+    }
+
+    .benefit-item p {
+        color: #555;
+        line-height: 1.6;
+    }
+    .blurred {
+        filter: blur(2px) brightness(0.7);
+        transition: filter 0.3s;
+    }
+    .focused {
+        filter: none;
+        transition: filter 0.3s;
+    }
+    @keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(80px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.left-content {
+    animation: slideInLeft 1s cubic-bezier(.77,0,.18,1) 0.2s both;
+}
+.right-image {
+    animation: slideInRight 1s cubic-bezier(.77,0,.18,1) 0.4s both;
+}
+</style>

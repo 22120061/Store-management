@@ -1,0 +1,90 @@
+module.exports.generateRandomString = (length) => {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+
+  for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  return result;
+}
+
+module.exports.generateRandomNumber = (length) => {
+  const characters = "0123456789";
+  let result = "";
+
+  for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  return result;
+}
+
+function generateRandomAgencyCode() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let code = '';
+  for (let i = 0; i < 5; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    code += characters[randomIndex];
+  }
+  return code;
+}
+
+
+const Agency = require('../models/agency.m.js')
+module.exports.generateUniqueAgencyCode = async () => {
+  let code;
+  let exists = true;
+  while (exists) {
+    code = generateRandomAgencyCode();
+    exists = await Agency.exists({ agencyCode: code });
+  }
+  return code;
+}
+
+function generateRandomOrderCode(length = 8) {
+  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+  const digits = '0123456789';
+  const symbols = '@#&$';
+
+  const allChars = uppercase + lowercase + digits + symbols;
+  let code = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * allChars.length);
+    code += allChars[randomIndex];
+  }
+
+  return code;
+}
+
+
+const Order = require('../models/order.m.js');
+
+
+module.exports.generateUniqueOrderCode = async () => {
+  let code;
+  let exists = true;
+
+  while (exists) {
+    code = generateRandomOrderCode(); 
+    exists = await Order.exists({ orderCode: code }); 
+  }
+
+  return code;
+};
+
+const Receipt = require('../models/receipt.m.js');
+
+module.exports.generateUniqueReceiptCode = async () => {
+  let code;
+  let exists = true;
+
+  while (exists) {
+    code = generateRandomOrderCode(); 
+    exists = await Receipt.exists({ receiptCode: code }); 
+  }
+
+  return code;
+};
